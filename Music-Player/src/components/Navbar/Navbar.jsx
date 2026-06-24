@@ -3,8 +3,8 @@
 
  import { FaHome } from "react-icons/fa";
 import { FiUpload } from "react-icons/fi";
-import { MdDarkMode } from "react-icons/md";
-import { FaUserCircle } from "react-icons/fa";
+import { FiLogIn } from "react-icons/fi";
+
 
  import "./Navbar.css";
 
@@ -25,11 +25,11 @@ import { FaUserCircle } from "react-icons/fa";
             
       <div className="nav-right">
 
-        <button><FiUpload /> Upload</button>
+        <button ><FiUpload /> Upload</button>
+         <button>Sign up</button>
+         <button style={{background:"white"}}><FiLogIn/>Login</button>
 
-        <button><MdDarkMode /></button>
-
-        <button><FaUserCircle /></button>
+      
 
       </div>
     </nav>

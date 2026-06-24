@@ -151,8 +151,20 @@ body {
 
 
 @media (max-width: 480px) {
+  .hero-wrapper {
+    padding: 1rem;
+  }
+
   .hero {
-    padding: 1.5rem;
+    width: 100%;
+    min-height: auto;
+    max-height: none;
+    padding: 1.25rem;
+    overflow: hidden;
+  }
+
+  .details h1 {
+    margin-right: 0;
   }
 
   .details p {
@@ -161,10 +173,23 @@ body {
 
   .progress {
     gap: 0.5rem;
+    width: 100%;
   }
 
   .controls {
     gap: 0.5rem;
+    flex-wrap: nowrap;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .controls button {
+    width: 36px;
+    height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
   }
 }
 
