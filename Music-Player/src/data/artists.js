@@ -4,7 +4,7 @@ import artist2 from "../assets/images/atifAslam-cover.jpg";
 import artist3 from "../assets/images/anuv jaein-cover.jpg";
 import artist4 from "../assets/images/hassanRaheem-cover.jpg";
 import artist5 from "../assets/images/ArajitSingh-cover.jpg"
-
+import artist6 from "../assets/images/anuv jaein-cover.jpg";
 const artists=[
   {
     id:1,
@@ -36,6 +36,12 @@ const artists=[
     name:"Arijit singh",
      role:"Artist",
     image:artist5
+  },
+   {
+    id:6,
+    name:"Anuv jaein",
+     role:"Artist",
+    image:artist6
   },
 ]
 

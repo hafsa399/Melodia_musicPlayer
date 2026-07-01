@@ -1,0 +1,97 @@
+.featured{
+     padding: 60px;
+     text-align: left;
+     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.featured h2{
+      font-size: 2rem;
+     color: #9559c0;
+}
+.chartContainer{
+     margin-top: 30px;
+     display: flex;
+     justify-content: center;
+     gap: 40px;
+    flex-wrap: wrap;
+}
+.chartCard{
+     width: 250px;
+     height: 250px;
+     padding: 10px;
+     border-radius: 25px;
+     text-align: left;
+  
+  
+}
+.chartCard:nth-child(1){
+
+background:#ddb8ff;
+
+}
+
+
+
+.chartCard:nth-child(2){
+
+background:#af68db;
+
+}
+
+
+
+.chartCard:nth-child(3){
+
+background: rgb(246, 177, 246);
+
+}
+
+
+
+.chartCard:hover{
+
+transform:translateY(-10px);
+
+}
+
+
+
+.chartCard h3{
+
+font-size:50px;
+
+font-weight:800;
+margin-bottom: 20px;
+
+
+}
+
+
+
+.chartCard h4{
+
+font-size:30px;
+margin-bottom:1px ;
+color:#666;
+margin-top: 10px;
+
+}
+
+
+
+.chartCard span{
+font-weight: 800;
+font-size:70px;
+color: rgb(16, 17, 17);
+
+
+
+}
+
+@media (Max-width:830) {
+     .chartCard{
+          width: 300px;
+          height: 270px;
+
+     }
+}

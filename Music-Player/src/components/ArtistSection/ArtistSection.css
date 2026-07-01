@@ -1,6 +1,6 @@
 .artistSection{
  width: min(800px, calc(100% - 2rem));
-  margin: 2rem 10rem auto;
+  margin: 38px 29px auto;
 padding:60px;
  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
@@ -12,7 +12,7 @@ padding:60px;
 .artistContainer{
 
 display:grid;
-grid-template-columns: repeat(5, minmax(0, 2fr));
+grid-template-columns: repeat(6, minmax(0, 2fr));
 gap:13.2rem;
 color: #b190c9;
 
@@ -23,7 +23,7 @@ color: #b190c9;
 .artistCard{
 
 text-align:left;
-width: 400px;
+width: 300px;
 }
 
 
@@ -56,7 +56,7 @@ margin-bottom:5px;
 }
 
 
-@media (max-width: 640px) {
+@media (max-width: 840px) {
   .artistSection {
     width: calc(100% - 2rem);
     margin: 2rem auto;

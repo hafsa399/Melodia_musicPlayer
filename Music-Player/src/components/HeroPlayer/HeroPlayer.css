@@ -20,7 +20,7 @@ body {
   max-height: 500px;
   border-radius: 24px;
   background-color: #cea0ef;
-  padding: 1.8rem;
+  padding: 1.6rem;
   box-sizing: border-box;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   margin: 0 auto;
@@ -34,7 +34,7 @@ body {
 
 .record {
   width: 100%;
-  max-width: 300px;
+  max-width: 310px;
   aspect-ratio: 1 / 1;
   border-radius: 3%;
   overflow: hidden;
@@ -118,7 +118,7 @@ body {
   align-items: center;
   gap: 0.53rem;
   flex-wrap: nowrap;
-  width: 110%;
+  width: 100%;
 }
 
 .line {
@@ -156,7 +156,7 @@ body {
   }
 
   .hero {
-    width: 100%;
+    width: 84%;
     min-height: auto;
     max-height: none;
     padding: 1.25rem;
