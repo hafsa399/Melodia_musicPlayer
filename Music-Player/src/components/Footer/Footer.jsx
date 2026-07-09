@@ -24,25 +24,25 @@ Explore
 
 </h3>
 
-<a href="#">
+<a href="#home">
 
 Home
 
 </a>
 
-<a href="#">
+<a href="#ArtistSection">
 
 Artists
 
 </a>
 
-<a href="#">
+<a href="#TrendingPlaylist">
 
 Playlist
 
 </a>
 
-<a href="#">
+<a href="#FeaturedCharts">
 
 Charts
 

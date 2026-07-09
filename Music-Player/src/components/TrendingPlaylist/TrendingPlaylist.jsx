@@ -28,8 +28,11 @@ const playlists = [
 ];
 
 function TrendingPlaylist() {
+
   return (
-    <section className="trending-playlist">
+ 
+
+    <section className="trending-playlist" id="TrendingPlaylist">
       <h2>Trending Playlist</h2>
 
       <div className="playlist-grid">
@@ -44,6 +47,7 @@ function TrendingPlaylist() {
         ))}
       </div>
     </section>
+  
   );
 }
 

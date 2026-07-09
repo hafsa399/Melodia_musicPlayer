@@ -2,7 +2,7 @@ import "./FeaturedCharts.css";
 import charts  from "../../data/charts";
 function FeaturedCharts() {
   return (
-    <section className="featured"> 
+    <section className="featured" id="FeaturedCharts"> 
       <h2>Featured Charts</h2>
       <div className="chartContainer">
         {charts.map((chart)=>(

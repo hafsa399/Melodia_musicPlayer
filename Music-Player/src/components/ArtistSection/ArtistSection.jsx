@@ -3,7 +3,7 @@ import artists from "../../data/artists";
 
 function ArtistSection(){
      return(
-          <section className="artistSection">
+          <section className="artistSection" id="ArtistSection">
                <h2>Popular Artists</h2>
                <div className="artistContainer">
                     {artists.map((artist)=>(

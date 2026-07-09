@@ -8,27 +8,48 @@ import {
   FaPause,
 } from "react-icons/fa";
 
-import album from "../../assets/images/pal pal.jpg";
-import song from "../../assets/songs/Pal Pal Jeena Muhal Ringtone Download Pagalworld.mp3";
+import songs from "../../data/songs"; 
+import defaultCover  from "../../assets/images/primary logo.png";
 import "./HeroPlayer.css";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 function HeroPlayer() {
+  const [currentSongIndex, setCurrentSongIndex] = useState(0);
+  const currentSong = songs[currentSongIndex];
+
   const audioRef = useRef(null);
+// for repeat
+  const [repeat, setRepeat] = useState(false);
+
   const [isPlaying, setIsPlaying] = useState(false);
   const [volume, setVolume] = useState(1);
 
+  const [currentTime, setCurrentTime] = useState(0);
+const [duration, setDuration] = useState(0);
+// play/pause button
   const togglePlay = () => {
-    if (isPlaying) {
-      audioRef.current.pause();
-    } else {
-      audioRef.current.play();
-    }
-
     setIsPlaying(!isPlaying);
   };
+  // next song button
+  const nextSong = () => {
 
+  if (currentSongIndex === songs.length - 1) {
+    setCurrentSongIndex(0);
+  } else {
+    setCurrentSongIndex(currentSongIndex + 1);
+  }
+};
+//  previous button
+const previousSong = () => {
+
+  if (currentSongIndex === 0) {
+    setCurrentSongIndex(songs.length - 1);
+  } else {
+    setCurrentSongIndex(currentSongIndex - 1);
+  }
+};
+// volume button fn
   const handleVolumeChange = (event) => {
     const newVolume = Number(event.target.value);
     setVolume(newVolume);
@@ -37,16 +58,72 @@ function HeroPlayer() {
       audioRef.current.volume = newVolume;
     }
   };
+  // shuffle button fn
+  const shuffleSong = () => {
+  let randomIndex;
+
+  do {
+    randomIndex = Math.floor(Math.random() * songs.length);
+  } while (randomIndex === currentSongIndex);
+
+  setCurrentSongIndex(randomIndex);
+};
+// time format
+const formatTime = (time) => {
+  if (isNaN(time)) return "0:00";
+
+  const minutes = Math.floor(time / 60);
+  const seconds = Math.floor(time % 60);
+
+  return `${minutes}:${seconds.toString().padStart(2, "0")}`;
+};
+
+  // notice change and and run them
+ useEffect(() => {
+  if (!audioRef.current) return;
+
+  if (isPlaying) {
+    audioRef.current.play();
+  } else {
+    audioRef.current.pause();
+  }
+}, [currentSongIndex, isPlaying]);
+
+// listen audio
+useEffect(() => {
+
+  const audio = audioRef.current;
+
+  if (!audio) return;
+
+  const updateTime = () => {
+    setCurrentTime(audio.currentTime);
+    setDuration(audio.duration);
+  };
+
+  audio.addEventListener("timeupdate", updateTime);
+
+  audio.addEventListener("loadedmetadata", updateTime);
+
+  return () => {
+    audio.removeEventListener("timeupdate", updateTime);
+    audio.removeEventListener("loadedmetadata", updateTime);
+  };
+
+}, [currentSongIndex]);
 
   return (
     <div className="hero-wrapper">
-      <section className="hero">
+      <section className="hero" id="home">
 
         <div className="album">
 
           <div className="record">
 
-            <img src={album} alt="album" />
+         <img
+  src={currentSong.albumCover || defaultCover}
+  alt={currentSong.title}
+/>
 
           </div>
 
@@ -55,9 +132,11 @@ function HeroPlayer() {
 
         <div className="details">
 
-          <h1>Pal Pal</h1>
+        <h1>{currentSong.title}</h1>
           <p>
-            Album by afusic Ali Sumroo and Talwiinder
+        
+  {currentSong.artist} • {currentSong.album}
+
             <span className="volume-control">
               <button className="volume-button" type="button">
                 <FaVolumeUp />
@@ -75,40 +154,60 @@ function HeroPlayer() {
           </p>
         
 
-          <div className="progress">
+        <div className="progress">
 
-            <span>2:15</span>
+  <span>{formatTime(currentTime)}</span>
 
-            <div className="line"></div>
+  <input
+    type="range"
+    min="0"
+    max={duration || 0}
+    value={currentTime}
+    className="progress-slider"
+    onChange={(e) => {
+      audioRef.current.currentTime = e.target.value;
+      setCurrentTime(e.target.value);
+    }}
+  />
 
-            <span>4:20</span>
+  <span>{formatTime(duration)}</span>
 
-          </div>
+</div>
 
 
           <div className="controls">
 
-            <button>
+            <button onClick={shuffleSong}>
               <FaRandom />
             </button>
 
-            <button>
+            <button  onClick={previousSong}>
               <FaStepBackward />
             </button>
             <button onClick={togglePlay}>
               {isPlaying ? <FaPause /> : <FaPlay />}
             </button>
-            <button>
-              <FaStepForward />
+            <button onClick={nextSong}>
+              <FaStepForward  />
             </button>
 
-            <button>
-              <FaRedoAlt />
-            </button>
+             <button
+  onClick={() => setRepeat((prev) => !prev)}
+  style={{
+    color: repeat ? "#75369a" : "#000000",
+  }}
+>
+  <FaRedoAlt />
+</button>
           </div>
 
         </div>
-        <audio ref={audioRef} src={song} />
+       <audio
+  ref={audioRef}
+  src={currentSong.audio}
+  loop={repeat}
+  onEnded={!repeat?nextSong:undefined}
+/>
       </section>
     </div>
   );

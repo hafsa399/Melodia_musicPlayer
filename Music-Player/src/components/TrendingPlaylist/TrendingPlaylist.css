@@ -59,7 +59,7 @@
 
 @media (max-width: 980px) {
   .trending-playlist {
-     width: calc(60% - 2rem); 
+     width: calc(88% - 2rem); 
     margin: 2rem auto;
   }
 
