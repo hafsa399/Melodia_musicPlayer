@@ -14,7 +14,8 @@ padding:60px;
 display:grid;
 grid-template-columns: repeat(6, minmax(0, 2fr));
 gap:13.2rem;
-color: #b190c9;
+color: #eae5e5;
+font-family: sans-serif;
 
 
 }
@@ -42,7 +43,8 @@ object-fit:cover;
 
 .artistCard h3{
 
-margin-bottom:5px;
+margin-bottom:7px;
+
 
 }
 
@@ -50,7 +52,7 @@ margin-bottom:5px;
 .artistCard p{
  margin: 0;
   color: #908896;
-  font-size: 0.99rem;
+  font-size: 0.94rem;
   font-family: serif;
 
 }
@@ -58,9 +60,12 @@ margin-bottom:5px;
 
 @media (max-width: 840px) {
   .artistSection {
-    width: calc(100% - 2rem);
-    margin: 2rem auto;
-    padding: 24px 0;
+    width: calc(80% - 2rem);
+    margin: 3rem auto;
+    padding: 25px 0;
+  }
+  .artistSection h2{
+    padding-bottom:25px ;
   }
 
   .artistContainer {
@@ -72,7 +77,9 @@ margin-bottom:5px;
     width: 100%;
     text-align: center;
   }
-
+.artistCard h3{
+  font-size: small;
+}
   .artistCard img {
     width: 100%;
     max-width: 140px;

@@ -1,0 +1,78 @@
+.body{
+         font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+         color: rgb(171, 88, 212); 
+         padding: 50px;
+
+}
+
+.body h1{
+      font-size: 50px;
+     text-align: center;
+}
+
+.cardContainer{
+      padding: 50px;
+       display: grid;
+      grid-template-columns:repeat(4,minmax(0,1fr)) ;
+       gap: 1.2rem;
+     }
+
+.card img{
+     width: 200px;
+}
+
+
+  .card {
+
+           width: 200px; 
+
+
+          }
+.card-detail{
+    color: aliceblue;
+    font-family: sans-serif;
+}
+.card-detail p{
+     color: rgb(132, 136, 139);
+     font-size: small;
+}
+.player {
+  margin: 50px auto;
+  width: 350px;
+  text-align: center;
+  padding: 20px;
+  border-radius: 20px;
+  background: #1f1f1f;
+  color: white;
+}
+
+.player-image {
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 15px;
+  margin-bottom: 15px;
+}
+
+.player audio {
+  width: 100%;
+  margin-top: 20px;
+}
+@media (max-width: 780px) {
+
+  .cardContainer {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.3rem;
+  }
+
+  .card {
+    width: 80%;
+    padding: 45px;
+  }
+  .card img{
+     width: 100px;
+}
+.card-detail{
+     font-size: small;
+}
+}

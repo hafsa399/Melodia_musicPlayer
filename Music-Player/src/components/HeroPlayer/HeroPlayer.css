@@ -15,14 +15,14 @@ body {
 }
 
 .hero {
-  width: min(460px, 100%);
+  /* width: min(460px, 70%); */
   min-height: 420px;
   max-height: 500px;
   border-radius: 24px;
   background-color: #cea0efee;
-  padding: 1.6rem;
+  padding: 1.2rem;
   box-sizing: border-box;
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-family:'Gill Sans', sans-serif;
   margin: 0 auto;
   box-shadow: 10px 10px rgba(180, 135, 204, 0.495);
 }
@@ -61,7 +61,10 @@ body {
 
 .details h1 {
   margin: 0px;
-  margin-right: 200px;
+  margin-right: 10px;
+  justify-content: left;
+  font-size: 22px;
+
 }
 
 .details p {
@@ -72,6 +75,7 @@ body {
   flex-wrap: wrap;
   margin: 0;
    font-family:serif;
+
 }
 
 .volume-control {
@@ -112,29 +116,6 @@ body {
   opacity: 1;
   pointer-events: auto;
 }
-
-/* .progress{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:12px;
-
-    width:100%;
-
-}
-
-.progress-slider{
-
-    flex:1;
-
-    cursor:pointer;
-  
-
-} */
-
-
 
 .progress {
   display: flex;
@@ -179,18 +160,18 @@ body {
   }
 
   .hero {
-    width: 84%;
-   
+    width: 88%;
     padding: 1rem;
     overflow: hidden;
   
   
   .record{
-        width:83% ;
-        margin-bottom: -32px;
+        width:95% ;
+        
    }
   .details h1 {
     margin-right: 0;
+
   }
 
   .details p {

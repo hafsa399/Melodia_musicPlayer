@@ -26,7 +26,7 @@ function Navbar({openLogin,openSignup}) {
 
         <input id="input"
           type="text"
-          placeholder="⌕ Search playlist, album..."
+          placeholder="🔍︎ Search songs,playlist..."
         />
 
       </div>

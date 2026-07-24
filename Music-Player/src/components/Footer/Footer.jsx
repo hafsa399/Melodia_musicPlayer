@@ -66,7 +66,7 @@ Instagram
 
 </a>
 
-<a href="#">
+<a href="https://x.com/home">
 
 Twitter
 
@@ -78,7 +78,7 @@ YouTube
 
 </a>
 
-<a href="#">
+<a href="https://github.com/hafsa399">
 
 GitHub
 

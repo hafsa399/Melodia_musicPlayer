@@ -10,65 +10,64 @@
   margin: 0 0 1rem;
   font-size: 2rem;
   letter-spacing: 0;
+
 }
 
 .playlist-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 20.2rem;
+  grid-template-columns: repeat(6, minmax(0, 2fr));
+  gap: 14.2rem;
+  
 
 }
 
 .playlist-card {
   overflow: hidden;
   border-radius: 8px;
-  background: #cb9feb;
-  width: 280px;
+  background: #8653aa;
+  width: 210px;
   transition: transform 0.25s, background 0.25s;
 }
 
 .playlist-card:hover {
-  background: #313030;
+  background: #594365;
   transform: translateY(-4px);
 }
 
 .playlist-card img {
   display: block;
-  width: 110%;
+  width: 100%;
   aspect-ratio: 1 / 1;
   object-fit: cover;
+ 
 }
 
 .playlist-info {
   padding: 0.2rem;
-  color: #0e0d0d;
+  color: #ede5e5;
 
 }
 
 .playlist-info h3 {
   font-size: 1.2rem;
+  font-family: sans-serif;
 
-}
-
-.playlist-info p {
-  margin: 0;
-  color: #524a58;
-  font-size: 0.98rem;
-  font-family: serif;
 }
 
 @media (max-width: 980px) {
   .trending-playlist {
-     width: calc(88% - 2rem); 
+     width: calc(80% - 1rem); 
     margin: 2rem auto;
   }
-
+ .trending-playlist h2{
+  padding-bottom: 25px;
+ }
   .playlist-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1.5rem;
+    gap: 1.3rem;
   }
 
   .playlist-card {
-    width: 100%;
+    width: 90%;
   }
 }

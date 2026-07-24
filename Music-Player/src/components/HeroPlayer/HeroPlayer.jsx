@@ -8,15 +8,14 @@ import {
   FaPause,
 } from "react-icons/fa";
 
-import songs from "../../data/songs"; 
+
 import defaultCover  from "../../assets/images/primary logo.png";
 import "./HeroPlayer.css";
 
 import { useEffect, useRef, useState } from "react";
 
-function HeroPlayer() {
-  const [currentSongIndex, setCurrentSongIndex] = useState(0);
-  const currentSong = songs[currentSongIndex];
+function HeroPlayer({songs,currentSong,setCurrentSong}) {
+ 
 
   const audioRef = useRef(null);
 // for repeat
@@ -25,30 +24,39 @@ function HeroPlayer() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [volume, setVolume] = useState(1);
 
-  const [currentTime, setCurrentTime] = useState(0);
+  const [currentTime, setCurrentTime] = useState(0); //state declaration
 const [duration, setDuration] = useState(0);
+
+
 // play/pause button
   const togglePlay = () => {
     setIsPlaying(!isPlaying);
   };
   // next song button
-  const nextSong = () => {
+ const nextSong = () => {
+  const currentIndex = songs.findIndex(
+    (song) => song.id === currentSong.id
+  );
 
-  if (currentSongIndex === songs.length - 1) {
-    setCurrentSongIndex(0);
-  } else {
-    setCurrentSongIndex(currentSongIndex + 1);
-  }
+  const nextIndex =
+    currentIndex === songs.length - 1 ? 0 : currentIndex + 1;
+
+  setCurrentSong(songs[nextIndex]);
 };
 //  previous button
 const previousSong = () => {
+  const currentIndex = songs.findIndex(
+    (song) => song.id === currentSong.id
+  );
 
-  if (currentSongIndex === 0) {
-    setCurrentSongIndex(songs.length - 1);
-  } else {
-    setCurrentSongIndex(currentSongIndex - 1);
-  }
+  const previousIndex =
+    currentIndex === 0
+      ? songs.length - 1
+      : currentIndex - 1;
+
+  setCurrentSong(songs[previousIndex]);
 };
+
 // volume button fn
   const handleVolumeChange = (event) => {
     const newVolume = Number(event.target.value);
@@ -58,16 +66,20 @@ const previousSong = () => {
       audioRef.current.volume = newVolume;
     }
   };
+
   // shuffle button fn
-  const shuffleSong = () => {
+const shuffleSong = () => {
+  if (songs.length <= 1) return;
+
   let randomIndex;
 
   do {
     randomIndex = Math.floor(Math.random() * songs.length);
-  } while (randomIndex === currentSongIndex);
+  } while (songs[randomIndex].id === currentSong.id);
 
-  setCurrentSongIndex(randomIndex);
+  setCurrentSong(songs[randomIndex]);
 };
+
 // time format
 const formatTime = (time) => {
   if (isNaN(time)) return "0:00";
@@ -87,7 +99,7 @@ const formatTime = (time) => {
   } else {
     audioRef.current.pause();
   }
-}, [currentSongIndex, isPlaying]);
+}, [currentSong, isPlaying]);
 
 // listen audio
 useEffect(() => {
@@ -110,7 +122,11 @@ useEffect(() => {
     audio.removeEventListener("loadedmetadata", updateTime);
   };
 
-}, [currentSongIndex]);
+}, [currentSong]);
+
+if (!currentSong) {
+  return <h2>Loading...</h2>;
+}
 
   return (
     <div className="hero-wrapper">
@@ -121,21 +137,19 @@ useEffect(() => {
           <div className="record">
 
          <img
-  src={currentSong.albumCover || defaultCover}
-  alt={currentSong.title}
+  src={currentSong.image ||currentSong.albumCover ||defaultCover}
+  alt={currentSong.name || currentSong.title}
 />
 
           </div>
 
         </div>
-
-
         <div className="details">
 
-        <h1>{currentSong.title}</h1>
+        <h1>{currentSong.name || currentSong.title}</h1>
           <p>
         
-  {currentSong.artist} • {currentSong.album}
+  {currentSong.artist_name || currentSong.title} • {currentSong.album_name ||currentSong.artist}
 
             <span className="volume-control">
               <button className="volume-button" type="button">
@@ -166,7 +180,7 @@ useEffect(() => {
     className="progress-slider"
     onChange={(e) => {
       audioRef.current.currentTime = e.target.value;
-      setCurrentTime(e.target.value);
+      setCurrentTime(Number(e.target.value));
     }}
   />
 
@@ -202,11 +216,13 @@ useEffect(() => {
           </div>
 
         </div>
-       <audio
+     <audio
+      
+  key={currentSong.id}
   ref={audioRef}
   src={currentSong.audio}
   loop={repeat}
-  onEnded={!repeat?nextSong:undefined}
+  onEnded={!repeat ? nextSong : undefined}
 />
       </section>
     </div>
