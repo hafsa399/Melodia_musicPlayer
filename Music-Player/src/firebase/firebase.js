@@ -4,12 +4,12 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCvuAtALRXY_xA9srnaKMX2FgqgfkmAL-s",
-  authDomain: "melodia--musicplayer.firebaseapp.com",
-  projectId: "melodia--musicplayer",
-  storageBucket: "melodia--musicplayer.firebasestorage.app",
-  messagingSenderId: "572627904910",
-  appId: "1:572627904910:web:8d64a93d22ccac742a1cdf",
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
 };
 
 const app = initializeApp(firebaseConfig);
