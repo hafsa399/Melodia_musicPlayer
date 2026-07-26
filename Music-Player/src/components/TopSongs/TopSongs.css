@@ -64,13 +64,14 @@
   }
    .songCard {
     
-    width: 210px;
-    height: 230px;
+   
+    height: 180px; 
+    width: calc(86% - 1em);
       
   }
 
   .songImage {
-    height: 170px;
+    height: calc(70%);
     
   } 
   .songInfo{
