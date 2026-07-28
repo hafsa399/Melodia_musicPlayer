@@ -14,7 +14,7 @@ import AuthModal from "../components/AuthModal/AuthModal";
 function Home({songs,currentSong,setCurrentSong}) {
      const [isAuthOpen, setIsAuthOpen] = useState(false);
 const [authMode, setAuthMode] = useState("login");
-
+const [isPlaying, setIsPlaying] = useState(false);
   
 
 
@@ -31,6 +31,8 @@ const [authMode, setAuthMode] = useState("login");
      {
           setIsAuthOpen(false);
      };
+
+     console.log(setIsPlaying);
      return(
           <div>
                <Navbar openLogin={openLogin}  
@@ -39,10 +41,14 @@ const [authMode, setAuthMode] = useState("login");
                songs={songs} 
                currentSong={currentSong}
                setCurrentSong={setCurrentSong}
+               isPlaying={isPlaying}
+               setIsPlaying={setIsPlaying}
                 />
                 <TopSongs
         songs={localSongs}
   setCurrentSong={setCurrentSong}
+  setIsPlaying={setIsPlaying}
+    isPlaying={isPlaying}
 />
                <TrendingPlaylist />
                <ArtistSection/>

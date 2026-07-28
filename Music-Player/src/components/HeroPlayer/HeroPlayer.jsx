@@ -14,14 +14,20 @@ import "./HeroPlayer.css";
 
 import { useEffect, useRef, useState } from "react";
 
-function HeroPlayer({songs,currentSong,setCurrentSong}) {
+function HeroPlayer({
+  songs,
+  currentSong,
+  setCurrentSong,
+  isPlaying,
+  setIsPlaying,
+}) {
  
 
   const audioRef = useRef(null);
 // for repeat
   const [repeat, setRepeat] = useState(false);
 
-  const [isPlaying, setIsPlaying] = useState(false);
+ 
   const [volume, setVolume] = useState(1);
 
   const [currentTime, setCurrentTime] = useState(0); //state declaration
