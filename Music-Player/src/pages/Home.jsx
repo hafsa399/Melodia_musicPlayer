@@ -5,13 +5,14 @@ import localSongs from "../data/songs";
 import Navbar from "../components/Navbar/Navbar";
 import HeroPlayer from "../components/HeroPlayer/HeroPlayer";
 import TopSongs from "../components/TopSongs/TopSongs";
+import SkeletonCard from "../components/SkeletonCard";
 import TrendingPlaylist from "../components/TrendingPlaylist/TrendingPlaylist";
 import ArtistSection from "../components/ArtistSection/ArtistSection";
 import Banner from "../components/Banner/Banner";
 import FeaturedCharts from "../components/FeaturedCharts/FeaturedCharts";
 import Footer from "../components/Footer/Footer";
 import AuthModal from "../components/AuthModal/AuthModal";
-function Home({songs,currentSong,setCurrentSong}) {
+function Home({songs,currentSong,setCurrentSong,isSongsLoading}) {
      const [isAuthOpen, setIsAuthOpen] = useState(false);
 const [authMode, setAuthMode] = useState("login");
 const [isPlaying, setIsPlaying] = useState(false);
@@ -37,13 +38,24 @@ const [isPlaying, setIsPlaying] = useState(false);
           <div>
                <Navbar openLogin={openLogin}  
                   openSignup={openSignup}/>
-               <HeroPlayer 
-               songs={songs} 
-               currentSong={currentSong}
-               setCurrentSong={setCurrentSong}
-               isPlaying={isPlaying}
-               setIsPlaying={setIsPlaying}
-                />
+               {isSongsLoading ? (
+                    <section className="top-songs" aria-label="Loading songs">
+                         <h2>Loading Songs</h2>
+                         <div className="topSongsContainer">
+                              {Array.from({ length: 6 }, (_, index) => (
+                                   <SkeletonCard key={index} />
+                              ))}
+                         </div>
+                    </section>
+               ) : (
+                    <HeroPlayer 
+                    songs={songs} 
+                    currentSong={currentSong}
+                    setCurrentSong={setCurrentSong}
+                    isPlaying={isPlaying}
+                    setIsPlaying={setIsPlaying}
+                     />
+               )}
                 <TopSongs
         songs={localSongs}
   setCurrentSong={setCurrentSong}

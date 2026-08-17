@@ -8,16 +8,21 @@ const Playlist = lazy(() => import("./pages/Playlist"));
 function App(){    // show home page on screen
 const[songs,setSongs]=useState([]);
 const[currentSong,setCurrentSong]=useState(null);
+const[isSongsLoading,setIsSongsLoading]=useState(true);
 
 
  useEffect(() => {
   async function loadSongs() {
-    const data = await getPopularSongs();
+    try {
+      const data = await getPopularSongs();
 
-    setSongs(data);
+      setSongs(data);
 
-    if (data.length > 0) {
-      setCurrentSong(data[0]);
+      if (data.length > 0) {
+        setCurrentSong(data[0]);
+      }
+    } finally {
+      setIsSongsLoading(false);
     }
   }
 
@@ -34,6 +39,7 @@ const[currentSong,setCurrentSong]=useState(null);
               songs={songs}
               currentSong={currentSong}
               setCurrentSong={setCurrentSong}
+              isSongsLoading={isSongsLoading}
             />
           }
         />
