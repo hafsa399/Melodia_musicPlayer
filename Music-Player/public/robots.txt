@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://melodia-music-player-psi.vercel.app/sitemap.xml
