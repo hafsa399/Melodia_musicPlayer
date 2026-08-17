@@ -139,12 +139,12 @@ if (!currentSong) {
       <section className="hero" id="home">
 
         <div className="album">
-
+          
           <div className="record">
 
          <img
   src={currentSong.image ||currentSong.albumCover ||defaultCover}
-  alt={currentSong.name || currentSong.title}
+  alt={currentSong.name || currentSong.title}  loading="lazy"
 />
 
           </div>

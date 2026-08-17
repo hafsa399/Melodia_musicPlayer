@@ -1,13 +1,14 @@
-import { Routes,Route} from "react-router-dom";
-import { useEffect,useState } from "react";
-
-import Home from "./pages/Home"; // bring home page
-import Playlist from "./pages/Playlist"; 
+import { Routes, Route } from "react-router-dom";
+import { useEffect, useState, Suspense, lazy } from "react";
 import { getPopularSongs } from "./api/jamendo";
+
+const Home = lazy(() => import("./pages/Home"));
+const Playlist = lazy(() => import("./pages/Playlist"));
 
 function App(){    // show home page on screen
 const[songs,setSongs]=useState([]);
 const[currentSong,setCurrentSong]=useState(null);
+
 
  useEffect(() => {
   async function loadSongs() {
@@ -24,12 +25,29 @@ const[currentSong,setCurrentSong]=useState(null);
 }, []); 
 
   return(
-    <Routes>
-    <Route path="/" element={<Home songs={songs} currentSong={currentSong}
-    setCurrentSong={setCurrentSong}/>}/>
-    <Route path="/playlist/:tag" element={<Playlist currentSong={currentSong}
-    setCurrentSong={setCurrentSong}/>}/>
-    </Routes>
+    <Suspense fallback={<div>Loading...</div>}>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <Home
+              songs={songs}
+              currentSong={currentSong}
+              setCurrentSong={setCurrentSong}
+            />
+          }
+        />
+        <Route
+          path="/playlist/:tag"
+          element={
+            <Playlist
+              currentSong={currentSong}
+              setCurrentSong={setCurrentSong}
+            />
+          }
+        />
+      </Routes>
+    </Suspense>
   ); 
  
 }
